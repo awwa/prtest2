@@ -26,22 +26,12 @@ jobs:
             export PATH=~/node/node-v6.10.1-linux-x64/bin:$PATH
             npm install
             ~/docs/node_modules/bower/bin/bower install
-      # - restore_cache:
-      #     key: jdk-9.0.4
-      - run:
-          name: Download java
-          command: |
-            [ -d '~/java/jdk-9.0.4' ] && curl -O https://download.java.net/java/GA/jdk9/9.0.4/binaries/openjdk-9.0.4_linux-x64_bin.tar.gz
-          working_directory: ~/java
       - run:
           name: Install java
           command: |
-            [ -d '~/java/jdk-9.0.4' ] && tar xvf openjdk-9.0.4_linux-x64_bin.tar.gz
+            curl -O https://download.java.net/java/GA/jdk9/9.0.4/binaries/openjdk-9.0.4_linux-x64_bin.tar.gz
+            tar xvf openjdk-9.0.4_linux-x64_bin.tar.gz
           working_directory: ~/java
-      - save_cache:
-          key: jdk-9.0.4
-          paths:
-            - ~/java
       - run:
           name: which rake
           command: which rake
