@@ -62,6 +62,7 @@ jobs:
           TZ: /usr/share/zoneinfo/Asia/Tokyo
 
     steps:
+      - checkout
       - restore_cache:
           keys:
             - bundle-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
