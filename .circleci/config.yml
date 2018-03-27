@@ -37,10 +37,7 @@ jobs:
             ~/docs/node_modules/bower/bin/bower install
       - run:
           name: Install java
-          command: |
-            curl -O https://download.java.net/java/GA/jdk9/9.0.4/binaries/openjdk-9.0.4_linux-x64_bin.tar.gz
-            tar xvf openjdk-9.0.4_linux-x64_bin.tar.gz
-          working_directory: ~/java
+          command: sudo apt-get install openjdk-8-jre
       - run:
           name: which rake
           command: which rake
