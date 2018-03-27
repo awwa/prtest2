@@ -30,10 +30,6 @@ jobs:
       - restore_cache:
           key: jdk-9.0.4
       - run:
-          name: ls jdk1
-          command: ls ./jdk-9.0.4
-          working_directory: ~/java
-      - run:
           name: ls jdk2
           command: ls ~/java/jdk-9.0.4
           working_directory: ~/java
