@@ -9,11 +9,22 @@ jobs:
           TZ: /usr/share/zoneinfo/Asia/Tokyo
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - bundle-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - bundle-{{ .Branch }}-
+            - bundle-
       - run:
           name: Resolve dependency for ruby
           command: |
             gem install bundler
-            bundle install
+            bundle check || bundle install
+
+      - save_cache:
+          key: bundle-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
       - run:
           name: Install node.js
           command: |
