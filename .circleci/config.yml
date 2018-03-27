@@ -75,7 +75,7 @@ jobs:
             - docs-
       - run:
           name: which rake
-          command: which rake
+          command: ls ~/docs/public
 
       # - run:
       #     name: Deploy Staging
