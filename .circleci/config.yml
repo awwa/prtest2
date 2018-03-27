@@ -30,13 +30,9 @@ jobs:
       - restore_cache:
           key: jdk-9.0.4
       - run:
-          name: ls jdk2
-          command: ls ~/java/jdk-9.0.4
-          working_directory: ~/java
-      - run:
           name: Install java
           command: |
-            [-d './jdk-9.0.4'] && curl -O https://download.java.net/java/GA/jdk9/9.0.4/binaries/openjdk-9.0.4_linux-x64_bin.tar.gz; tar xvf openjdk-9.0.4_linux-x64_bin.tar.gz
+            [-d ~/java/jdk-9.0.4] && curl -O https://download.java.net/java/GA/jdk9/9.0.4/binaries/openjdk-9.0.4_linux-x64_bin.tar.gz; tar xvf openjdk-9.0.4_linux-x64_bin.tar.gz
           working_directory: ~/java
       - save_cache:
           key: jdk-9.0.4
