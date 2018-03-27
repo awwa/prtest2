@@ -19,12 +19,10 @@ jobs:
           command: |
             gem install bundler
             bundle check || bundle install
-
       - save_cache:
           key: bundle-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-
       - run:
           name: Install node.js
           command: |
@@ -67,6 +65,8 @@ jobs:
     steps:
       - restore_cache:
           key: docs-{{ .Branch }}-{{ .Revision }}
+          key: docs-{{ .Branch }}-
+          key: docs-
       - run:
           name: Deploy Staging
           command: rake S3_BUCKET=sendgrid-jp-docs-stg upload
