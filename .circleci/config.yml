@@ -9,6 +9,15 @@ jobs:
           TZ: /usr/share/zoneinfo/Asia/Tokyo
     steps:
       - checkout
+      - run:
+          name: install aws cli
+          command: |
+            sudo apt update && sudo apt install python-pip
+            sudo apt install python-dev
+            sudo pip install awscli
+      - run:
+          name: aws --version
+          command: aws --version
       - restore_cache:
           keys:
             - bundle-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
@@ -66,8 +75,12 @@ jobs:
       - run:
           name: install aws cli
           command: |
-            sudo apt update && sudo apt install python-pip, python-dev
+            sudo apt update && sudo apt install python-pip
+            sudo apt install python-dev
             sudo pip install awscli
+      - run:
+          name: aws --version
+          command: aws --version
       - restore_cache:
           keys:
             - bundle-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
@@ -95,13 +108,8 @@ jobs:
             npm install
             ~/docs/node_modules/bower/bin/bower install
       - run:
-          name: Install java
-          command: |
-            sudo apt-get install openjdk-8
-          working_directory: ~/java
-      - run:
-          name: which rake
-          command: ls ~/docs/public
+          name: release
+          command: aws s3 sync ~/docs/ s3://hogefugaawwatest/ --include "*" --acl public-read --cache-control "max-age=3600"
 
       # - run:
       #     name: Deploy Staging
