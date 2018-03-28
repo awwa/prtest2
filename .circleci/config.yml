@@ -35,11 +35,12 @@ jobs:
             export PATH=~/node/node-v6.10.1-linux-x64/bin:$PATH
             npm install
             ~/docs/node_modules/bower/bin/bower install
-      # - run:
-      #     name: Install java
-      #     command: |
-      #       sudo apt-get update
-      #       sudo apt-get install openjdk-8-jdk
+      - run:
+          name: Install java
+          command: |
+            curl -O https://download.java.net/java/GA/jdk9/9.0.4/binaries/openjdk-9.0.4_linux-x64_bin.tar.gz
+            tar xvf openjdk-9.0.4_linux-x64_bin.tar.gz
+          working_directory: ~/java
       - run:
           name: which rake
           command: which rake
@@ -64,7 +65,9 @@ jobs:
       - checkout
       - run:
           name: install aws cli
-          command: pip install awscli
+          command: |
+            sudo apt-get install python3
+            pip install awscli
       - restore_cache:
           keys:
             - bundle-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
