@@ -65,7 +65,7 @@ jobs:
       - checkout
       - run:
           name: install aws cli
-          command: apt update && apt install awscli, python-pip
+          command: sudo apt update && apt install awscli, python-pip
       - restore_cache:
           keys:
             - bundle-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
