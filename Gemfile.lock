@@ -33,6 +33,7 @@ GEM
     faraday_middleware (0.12.2)
       faraday (>= 0.7.4, < 1.0)
     fast-stemmer (1.0.2)
+    ffi (1.9.23)
     ffi (1.9.23-x64-mingw32)
     haml (5.0.4)
       temple (>= 0.8.0)
@@ -97,6 +98,8 @@ GEM
     net-ssh-gateway (2.0.0)
       net-ssh (>= 4.0.0)
     nio4r (1.1.1)
+    nokogiri (1.8.2)
+      mini_portile2 (~> 2.3.0)
     nokogiri (1.8.2-x64-mingw32)
       mini_portile2 (~> 2.3.0)
     octokit (4.8.0)
@@ -108,7 +111,7 @@ GEM
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.2.0)
     rack (2.0.4)
-    rake (12.3.1)
+    rake (12.3.3)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
@@ -147,6 +150,7 @@ GEM
     yui-compressor (0.12.0)
 
 PLATFORMS
+  ruby
   x64-mingw32
 
 DEPENDENCIES
