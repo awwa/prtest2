@@ -109,7 +109,7 @@ jobs:
             ~/docs/node_modules/bower/bin/bower install
       - run:
           name: release
-          command: aws s3 sync ~/docs/public/ s3://hogefugaawwatest/ --include "*" --acl public-read --cache-control "max-age=3600" --delete
+          command: aws s3 sync ~/docs/public/ s3://hogefugaawwatest/ --include "*" --acl public-read --cache-control "max-age=3600"
 
       # - run:
       #     name: Deploy Staging
